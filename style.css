@@ -75,21 +75,24 @@ header h1{
   justify-content: center;
   width: 52px; /* Adjust to fit icon */
   height: 54px; /* Adjust to fit icon */
-  border-radius: 6px; /* Match other buttons */
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px ; /* Match other buttons */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle default shadow */
   cursor: pointer;
   font-weight: bold;
   font-size: 12px;
   transition: all 0.3s ease;
   text-align: center;
-  /* color:white */
   margin-top: 1rem;
-  border: 1px solid #616467;
+  border-color: white;
+
 }
 
-#fileManagerButton:hover, #fileManagerButton.active {
+/* On hover or when active */
+#fileManagerButton:hover, #fileManagerButton.active, #toolsButton:hover, #toolsButton.active{
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 10px rgba(255, 255, 0, 0.5), 0 0 12px rgba(255, 255, 0, 0.7); /* Strong yellow shadow */
+  background-color: #f9f9f9; /* Light background on hover and active */
+  border: 2px solid #ffcc00; /* Strong yellow border on hover and active */
 }
 
 h2{
@@ -147,6 +150,54 @@ h2{
   background-color: #C6E7FF;
   font-weight: bold;
   border-color: #0f5132;
+}
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%; /* Width of the modal */
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+#yesButton {
+  background-color: #4CAF50; /* Green for Yes */
+  color: white;
+}
+
+#noButton {
+  background-color: #f44336; /* Red for No */
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 
 #blocklyArea {
@@ -376,6 +427,7 @@ height: auto;
 
 /* Toolbox background */
 .blocklyToolboxDiv {
+  display:none !important;/*Made toolbox invisible by default. !important is added to override the initial CSS rule */
   background-color: white; /* Dark background for toolbox */
   /* border-right: 2px solid #34495e; */
   color: #ecf0f1; /* Default text color */
