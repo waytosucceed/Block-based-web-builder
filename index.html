@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Block Based Web Builder</title>
+
+    <link rel="icon" type="image/x-icon" href="/assets/company_logo-tab.png" />
+
+    <!-- Include Blockly -->
+    <script src="https://unpkg.com/blockly@9.0.0/blockly.min.js"></script>
+
+    <!-- Include custom blocks -->
+    <script src="blocks/html_blocks.js"></script>
+    <script src="blocks/css_blocks.js"></script>
+    <script src="blocks/js_blocks.js"></script>
+    <script src="blocks/attributes_blocks.js"></script>
+
+    <!-- Include JSZip for exporting as ZIP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+
+    <!-- Include the main app script -->
+    <script src="app.js" defer></script>
+
+    <!-- Include custom styles -->
+    <link rel="stylesheet" href="style.css" />
+    
+  </head>
+
+  <body>
+    <!-- <header>
+      <img
+        src="assets/company_logo.png"
+        height="50"
+        class="logo"
+        alt="Company Logo"
+      />
+
+      <h1></h1>
+     
+    </header> -->
+    
+    <header class="header">
+      <img src="./assets/logo/Logo.png" alt="Logo" class="logo" />
+      <img src="./assets/logo/header.png" alt="Header" class="header-image" />
+    </header>
+
+    <div id="container">
+      <!-- Sidebar with toggle buttons -->
+      <div id="sidebar">
+
+         <button id="fileManagerButton">
+          <div class="files-button">
+            <img src="./assets/options/files-new.png" alt="Files Icon" class="files-icon">
+            <span class="files-text">Files</span>
+        </div>
+        </button>
+        <button id="toolsButton">
+          <div class="tools-button">
+            <img src="./assets/options/toolbox.png" alt="Files Icon" class="tools-icon">
+            <span class="files-text">Tools</span>
+        </div>
+        </button>
+       
+      </div>
+
+      <!-- File Manager (initially hidden) -->
+      <div id="fileManager">
+        <h2>Files</h2>
+        <div id="fileList">
+          <!-- File items will be dynamically added here -->
+        </div>
+
+        <form id="addFileForm">
+          <input
+            type="text"
+            id="newFileName"
+            placeholder="File name"
+            required
+          />
+          <select id="newFileType">
+            <option value="html">HTML</option>
+            <option value="js">JavaScript</option>
+            <option value="css">CSS</option>
+          </select>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+      
+      
+
+      <!-- Blockly coding area (middle panel) -->
+      <div id="blocklyArea"> 
+       
+        <div id="blocklyDiv"></div>
+       
+      </div>
+      
+
+      <!-- Resizer between coding area and right pane -->
+      <div id="resizer"></div>
+
+      <div id="rightPane">
+        <!-- Toggle buttons for switching views -->
+        <div id="toggleButtons">
+          <button id="showCodeButton" class="toggle-btn active">
+            <!-- <img src="./assets/options/code.png"  width="40px"> -->
+            <span>Show Code</span>
+          </button>
+          <button id="showPreviewButton" class="toggle-btn">
+            <!-- <img src="./assets/options/output.png" width="40px"> -->
+            Show Preview
+          </button>
+          <button id="exportButton" class="toggle-btn">
+            <!-- <img src="./assets/options/export.png" class="files-icon"> -->
+            <img src="./assets/options/export-new.png" width="18px" style="padding-right: 6px;">
+            Export Project
+          </button>
+        </div>
+
+        <!-- Generated Code Section -->
+        <div id="generatedCodeSection">
+          <h2>Generated Code For <span id="current-filename"></span></h2>
+          <textarea id="generatedCode" readonly></textarea>
+        </div>
+
+        <!-- Live Preview Section -->
+        <div id="previewSection" class="hidden">
+          <h2>Live Preview</h2>
+          <button id="popOut" class="toggle-btn">
+            <!-- <img src="./assets/options/pop-out.png" width="35px"> -->
+            <img src="./assets/options/new-tab.png" width="18px" style="padding-right: 6px;">
+
+            Open Output in New Tab
+          </button>
+          <iframe id="preview" srcdoc=""></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toolbox XML -->
+    <xml id="toolbox" style="display: none">
+     
+      <category name="HTML">
+        <category name="Document Structure" colour="#0ACDFF">
+          <label text="Document Structure"></label>
+          <block type="html_doctype"></block>
+          <block type="html_html"></block>
+          <block type="html_head"></block>
+          <block type="html_body"></block>
+        </category>
+
+        <category name="Metadata and links" colour="#0ACDFF">
+          <label text="Metadata and links"></label>
+          <block type="html_style"></block>
+          <block type="html_link"></block>
+          <block type="html_script"></block>
+        </category>
+
+        <category name="Text" colour="#0ACDFF">
+          <label text="Text"></label>
+          <block type="plain_text"></block>
+          <block type="html_heading"></block>
+          <block type="html_p"></block>
+        </category>
+
+        <category name="Text Formatting" colour="#0ACDFF">
+          <label text="Text Formatting"></label>
+          <block type="strong"></block>
+          <block type="bold_text"></block>
+          <block type="emphasized"></block>
+          <block type="italic"></block>
+          <block type="underline"></block>
+          <block type="span"></block>
+        </category>
+
+        <category name="Line Breaks and Dividers" colour="#0ACDFF">
+          <label text="Line Breaks and Dividers"></label>
+          <block type="html_br"></block>
+          <block type="html_hr"></block>
+        </category>
+
+        <category name="Media" colour="#0ACDFF">
+          <label text="Media"></label>
+          <block type="html_img"></block>
+          <block type="html_audio"></block>
+          <block type="html_video"></block>
+          <block type="html_source"></block>
+          <block type="html_iframe"></block>
+        </category>
+     
+        <category name="Interactive Elements" colour="#0ACDFF">
+          <label text="Interactive Elements"></label>
+          <block type="html_button"></block>
+          <block type="html_a"></block>
+        </category>
+
+        <category name="Containers and Layout" colour="#0ACDFF">
+          <label text="Containers and Layout"></label>
+          <block type="html_div"></block>
+          <block type="html_header"></block>
+          <block type="html_footer"></block>
+          <block type="html_nav"></block> 
+          <block type="html_article"></block>
+          <block type="html_aside"></block>
+        </category>
+
+        <category name="Form" colour="#0ACDFF">
+          <label text="Form"></label>
+          <block type="html_form"></block>
+          <block type="html_label"></block>
+          <block type="html_input"></block>
+          <block type="html_textarea"></block>
+          <block type="html_select"></block>
+          <block type="html_datalist"></block>
+          <block type="html_option"></block>
+        </category>
+
+        <category name="List" colour="#0ACDFF">
+          <block type="html_ul"></block>
+          <block type="html_ol"></block>
+          <block type="html_li"></block>
+        </category>  
+
+        <category name="Table" colour="#0ACDFF">
+          <block type="html_table"></block>
+          <block type="html_caption"></block>
+          <block type="html_th"></block>
+          <block type="html_tr"></block>
+          <block type="html_td"></block>
+        </category>
+      </category>
+
+      <category name="Attributes">
+        <category name="Basic" colour="#FFAB19">
+          <label text="Basic"></label>
+          <block type="html_attribute_id"></block>
+          <block type="html_attribute_class"></block>
+          <block type="html_attribute_title"></block>
+          <block type="html_attribute_style"></block>
+          <block type="html_attribute_width"></block>
+          <block type="html_attribute_height"></block>
+          <block type="html_attribute_border"></block>
+          <block type="html_attribute_lang"></block>
+        </category>
+
+        <category name="Content" colour="#FFAB19">
+          <label text="Content"></label>
+          <block type="html_attribute_placeholder"></block>
+          <block type="html_attribute_value"></block>
+          <block type="html_attribute_href"></block>
+          <block type="html_attribute_src"></block>
+          <block type="html_attribute_type_form"></block>
+        </category>
+
+        <category name="Events" colour="#FFAB19">
+          <label text="Events"></label>
+          <block type="html_attribute_onclick"></block>
+        </category>
+
+        <category name="Input" colour="#FFAB19">
+          <label text="Input"></label>
+          <block type="html_attribute_rows"></block>
+          <block type="html_attribute_cols"></block>
+          <block type="html_attribute_size"></block>
+          <block type="html_attribute_maxlength"></block>
+          <block type="html_attribute_multiple"></block>
+        </category>
+
+        <category name="Form" colour="#FFAB19">
+          <label text="Form"></label>
+          <block type="html_attribute_for"></block>
+          <block type="html_attribute_name"></block>
+          <block type="html_attribute_pattern"></block>
+          <block type="html_attribute_disabled"></block>       
+          <block type="html_attribute_label"></block>
+          <block type="html_attribute_value"></block>
+          <block type="html_attribute_list"></block>
+          <block type="html_attribute_required"></block>
+          <block type="html_attribute_autofocus"></block>
+        </category>
+
+        <category name="Media" colour="#FFAB19">
+          <label text="Media"></label>
+          <block type="html_attribute_autoplay"></block>
+          <block type="html_attribute_muted"></block>
+          <block type="html_attribute_controls"></block>
+          <block type="html_attribute_type"></block>
+          <block type="html_attribute_alt"></block>
+        </category>
+  
+      </category>
+
+      <category name="CSS">
+        <category name="Selector" colour="#8EB140">
+          <label text="Selector"></label>
+          <block type="css_rule"></block>
+        </category>
+
+        <category name="Layout" colour="#8EB140">
+          <label text="Layout"></label>
+          <block type="css_display"></block>
+          <block type="css_position"></block>
+          <block type="css_z_index"></block>
+        </category>
+
+        <category name="Box Model" colour="#8EB140">
+          <label text="Box Model"></label>
+          <block type="css_margin"></block>
+          <block type="css_margin_left"></block>
+          <block type="css_margin_right"></block>
+          <block type="css_margin_top"></block>
+          <block type="css_margin_bottom"></block>
+          <block type="css_padding"></block>
+          <block type="css_padding_left"></block>
+          <block type="css_padding_right"></block>
+          <block type="css_padding_top"></block>
+          <block type="css_padding_bottom"></block>
+          <block type="css_width"></block>
+          <block type="css_height"></block>
+          <block type="css_border"></block>
+        </category>
+
+        <category name="Color and Background" colour="#8EB140">
+          <label text="Color and Background"></label>
+          <block type="css_color"></block>
+          <block type="css_background_color"></block>
+        </category>
+
+        <category name="Typography" colour="#8EB140">
+          <label text="Typography"></label>
+          <block type="css_font_size"></block>
+          <block type="css_text_decoration"></block>
+          <block type="css_font_family"></block>
+          <block type="css_font_weight"></block>
+          <block type="css_text_align"></block>
+          <block type="css_text_transform"></block>
+          <block type="css_letter_spacing"></block>
+          <block type="css_word_spacing"></block>
+        </category>
+
+        <category name="Visual Effects" colour="#8EB140">
+          <label text="Visual Effects"></label>
+          <block type="css_transform"></block>
+          <block type="css_opacity"></block>
+          <block type="css_transition"></block>
+          <block type="css_text_shadow"></block>
+          <block type="css_box_shadow"></block>
+          <block type="css_border_radius"></block>
+        </category>
+
+        <category name="List" colour="#8EB140">
+          <label text="List"></label>
+          <block type="css_list_style_type"></block>
+        </category>
+
+        <category name="Table" colour="#8EB140">
+          <label text="Table"></label>
+          <block type="css_border_collapse"></block>
+        </category>
+      </category>
+
+      <category name="JavaScript">
+        <block type="js_alert">
+          <value name="MESSAGE">
+            <shadow type="text">
+              <field name="TEXT">Hello, World!</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="js_console_log">
+          <value name="TEXT">
+            <shadow type="text">
+              <field name="TEXT">Debugging message</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="js_function">
+          <field name="NAME">myFunction</field>
+          <statement name="DO">
+            <block type="js_console_log">
+              <value name="TEXT">
+                <shadow type="text">
+                  <field name="TEXT">Function executed!</field>
+                </shadow>
+              </value>
+            </block>
+          </statement>
+        </block>
+
+        <!-- Newly Added Blocks -->
+        <block type="js_variable_declare">
+          <field name="VAR">myVar</field>
+          <value name="VALUE">
+            <shadow type="math_number">
+              <field name="NUM">10</field>
+            </shadow>
+          </value>
+        </block>
+
+        <block type="js_event_listenerDOMContentLoaded">
+          <statement name="DO">
+            <block type="js_console_log">
+              <value name="TEXT">
+                <shadow type="text">
+                  <field name="TEXT">DOM is ready!</field>
+                </shadow>
+              </value>
+            </block>
+          </statement>
+        </block>
+
+        <block type="js_event_listener">
+          <field name="EVENT">click</field>
+          <value name="ELEMENT">
+            <shadow type="text">
+              <field name="TEXT">document.getElementById('myButton')</field>
+            </shadow>
+          </value>
+          <statement name="DO">
+            <block type="js_alert">
+              <value name="MESSAGE">
+                <shadow type="text">
+                  <field name="TEXT">Button clicked!</field>
+                </shadow>
+              </value>
+            </block>
+          </statement>
+        </block>
+
+        <block type="js_if_else">
+          <value name="CONDITION">
+            <shadow type="logic_boolean">
+              <field name="BOOL">TRUE</field>
+            </shadow>
+          </value>
+          <statement name="DO">
+            <block type="js_console_log">
+              <value name="TEXT">
+                <shadow type="text">
+                  <field name="TEXT">Condition is true!</field>
+                </shadow>
+              </value>
+            </block>
+          </statement>
+          <statement name="ELSE">
+            <block type="js_console_log">
+              <value name="TEXT">
+                <shadow type="text">
+                  <field name="TEXT">Condition is false!</field>
+                </shadow>
+              </value>
+            </block>
+          </statement>
+        </block>
+        <block type="number_input"></block>
+        <block type="js_while_loop"></block>
+        <block type="js_function_call"></block>
+        <block type="js_arithmetic"></block>
+        <block type="js_logical"></block>
+        <block type="js_compare"></block>
+        <block type="js_return"></block>
+        <block type="js_set_timeout"></block>
+        <block type="js_set_interval"></block>
+        <block type="js_array"></block>
+        <block type="js_array_access"></block>
+        <block type="js_array_push"></block>
+        <block type="js_switch"></block>
+        <block type="js_break"></block>
+        <block type="js_case"></block>
+        <block type="js_array_length"></block>
+        <block type="js_array_map"></block>
+        <block type="js_array_filter"></block>
+        <block type="js_json_parse"></block>
+        <block type="js_json_stringify"></block>
+      </category>
+    </xml>
+  </body>
+</html>

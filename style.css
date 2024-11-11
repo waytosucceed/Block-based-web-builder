@@ -1,0 +1,603 @@
+/* General body styling */
+body {
+  /* font-family: 'Arial', sans-serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+/* header {
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  height:70px
+  
+} */
+.header {
+  /* width: 100%; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 5px 30px;
+  background-color: white; 
+text-align: left;    
+
+}
+
+  
+.logo {
+  width: 4%; /* Slightly larger logo */
+}
+img{
+  vertical-align: middle;
+}
+.header-image {
+  width: 20%; 
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* .logo{
+  margin-top: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 200px;
+}
+
+header h1{
+ margin-left: 200px;
+ color: white;
+} */
+
+
+#container {
+  display: flex;
+  height: calc(100vh - 65px);
+}
+
+/* Sidebar styling */
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  /* background-color: #FFCCEA; */
+  padding: 10px;
+  width: 40px;
+  align-items: center;
+}
+
+
+#fileManagerButton, #toolsButton {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52px; /* Adjust to fit icon */
+  height: 54px; /* Adjust to fit icon */
+  border-radius: 6px; /* Match other buttons */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  text-align: center;
+  /* color:white */
+  margin-top: 1rem;
+  border: 1px solid #616467;
+}
+
+#fileManagerButton:hover, #fileManagerButton.active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+h2{
+  /* color:white; */
+}
+
+.files-icon, .tools-icon {
+  width: 30px; /* Adjust icon size */
+  height: auto;
+  margin-bottom: 3px; /* Spacing between icon and text */
+  
+}
+
+
+
+
+/* Panel styling */
+#fileManager {
+  width: 200px;
+  padding: 10px;
+  background-color: #ffca28;;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  border: 2px solid white;
+
+  transition: all 0.3s ease;
+  display: none; 
+
+  h2{
+    color: white;
+    color: #0B192C;
+  }
+}
+
+.file-item {
+  display: block;
+  padding: 10px;
+  margin: 5px 0;
+  text-decoration: none;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.file-item:hover {
+  background-color: #e1e1e1;
+}
+
+.file-item.active {
+  background-color: #d1e7dd;
+  background-color: #C6E7FF;
+  font-weight: bold;
+  border-color: #0f5132;
+}
+
+#blocklyArea {
+  flex-grow: 1;
+  padding: 10px;
+  transition: width 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f9;
+  /* background-color: #FFCCEA; */
+  overflow: hidden; /* Prevent overflow */
+}
+
+#blocklyDiv {
+  width: 100%;
+  height: 100%;
+}
+
+/* Resizer */
+#resizer {
+  width: 5px;
+  cursor: ew-resize;
+  background-color: #ddd;
+  transition: background-color 0.3s ease;
+}
+
+#resizer:hover {
+  background-color: #aaa;
+}
+
+#rightPane {
+  width: 300px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-right: 1.3rem;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: auto; /* Ensure scroll if content overflows */
+  background-color: rgb(243 244 246);
+  background-color: #C6E7FF;
+  color: black;
+}
+
+/* Full height for sections when they are displayed */
+#previewSection {
+  width: 100%;
+  height: calc(100% - 50px); /* Leave space for the buttons */
+  display: none; /* Hidden by default */
+}
+
+#previewSection h2{
+  margin-top: -10px;
+  /* color: white; */
+  color: #616467;
+}
+
+#generatedCodeSection {
+  width: 100%;
+  height: calc(100% - 50px); /* Leave space for the buttons */
+}
+
+#generatedCodeSection h2{
+  margin-top: -10px;
+  /* color:white */
+  color: #616467;
+}
+
+#generatedCodeSection.active,
+#previewSection.active {
+  display: block;
+}
+#showCodeButton.active,
+#showPreviewButton.active{
+
+  /* background-image: linear-gradient(-180deg, #00D775, #00BD68); */
+  background-color: #a3bc00 !important;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  /* height: 44px; */
+  /* line-height: 44px; */
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  /* width: 100%; */
+  z-index: 9;
+  border: 0;
+}
+
+
+
+
+#previewSection iframe {
+  width: 100%;
+  height: 75%;
+  background-color: white;
+}
+
+#generatedCode {
+  width: 100%;
+  height: 75%;
+}
+
+#toggleButtons {
+  display: flex;
+  margin-bottom: 10px;
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+  justify-content: flex-start; /* Align buttons to the left */
+  margin-top: -22px;
+  margin-left: -22px;
+  
+}
+
+/* When the screen width is smaller than 500px, stack buttons vertically */
+@media (max-width: 500px) {
+  #toggleButtons {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center the buttons horizontally */
+  }
+
+  .toggle-btn {
+    margin: 10px 0; /* Space between buttons when stacked */
+    
+  }
+}
+#toggleButtons {
+  padding: 10px;
+}
+
+.toggle-btn {  
+  background-color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: bold;
+  /* width: 120px; */
+  height:30px;
+  margin: 10px; /* Can be adjusted if needed */
+  border-radius: 5px;
+  /* font-size: 14px; */
+  transition: all 0.3s ease;
+  text-align: center;
+  /* color: white; */
+  outline: none;
+  cursor: pointer;
+  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+
+  padding: 16px 14px 18px;
+  color: #616467;
+  box-shadow: inset 0 0 0 2px #616467;
+  background-color: transparent;
+}
+
+.toggle-btn{
+  /* background-image: linear-gradient(-180deg, #00D775, #00BD68); */
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  /* height: 44px; */
+  /* line-height: 44px; */
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  /* width: 100%; */
+  z-index: 9;
+  border: 0;
+  color: black;
+}
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
+}
+/* 
+#exportButton{
+  outline: none;
+  cursor: pointer;
+  border-radius: 500px;
+  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+padding-top:  10px;
+padding-bottom: 10px;
+  color: #616467;
+  box-shadow: inset 0 0 0 2px #616467;
+  background-color: transparent;
+ 
+height: auto;
+} */
+#exportButton:hover{
+  color: #fff;
+  background-color: #616467 !important;
+}
+
+
+#popOut{
+  margin-left: 0px;
+  width: 215px;
+  color: #616467;
+}
+
+/* Toolbox background */
+.blocklyToolboxDiv {
+  background-color: white; /* Dark background for toolbox */
+  /* border-right: 2px solid #34495e; */
+  color: #ecf0f1; /* Default text color */
+  background-color: red;
+  background-color: rgb(243 244 246);
+  background-color: #ffca28;
+}
+
+.blocklyToolboxCategory {
+  margin-left: -7px;
+}
+
+/* Style each category row */
+.blocklyTreeRow {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-bottom: 5px; /* Increase spacing between each item */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+ 
+}
+
+/* Change category name styling */
+.blocklyTreeLabel {
+  font-weight: bold;
+  font-size: 14px;
+  color: #ecf0f1; /* Category text color */
+  margin-left: 40px;
+}
+
+/* Style for hover effect on category */
+.blocklyTreeRow:hover {
+  background-color: #34495e; /* Darker shade on hover */
+}
+
+/* Change the flyout background color */
+.blocklyFlyoutBackground {
+  fill: #34495e !important; /* Darker background for the flyout */
+}
+.blocklyText {
+  font-weight: bold;
+}
+.blocklyFlyoutLabelText {
+  fill: white !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+#blockly-1 {
+  /* background-image: url('./assets/categories/html.png') !important;  */
+  background-image: url('./assets/categories/1.png') !important; 
+
+  /* background-size: 33px 34px !important; */
+  background-repeat: no-repeat;
+  background-size: contain;
+ 
+
+}
+#blockly-d {
+  /* background-image: url('./assets/categories/attributes.png') !important;  */
+  background-image: url('./assets/categories/2.png') !important; 
+
+  /* background-size: 31px 33px;  */
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#blockly-k {
+  /* background-image: url('./assets/categories/css.png') !important;  */
+  background-image: url('./assets/categories/3.png') !important; 
+  /* background-size: 35px 32px;  */
+  background-repeat: no-repeat;
+  align-items: center !important;
+  background-size: contain;
+ 
+}
+#blockly-t {
+  /* background-image: url('./assets/categories/js.png') !important;  */
+  background-image: url('./assets/categories/4.png') !important; 
+  /* background-size: 30px 33px;  */
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self: center !important;
+}
+
+.blocklyTreeIcon{
+  display: none !important;
+}
+
+/* HTML Category - Selected */
+.blocklyTreeRow.blocklyTreeSelected#blockly-1 {
+  background-color: #0ACDFF !important; 
+}
+
+/* CSS Category - Selected */
+.blocklyTreeRow.blocklyTreeSelected#blockly-k {
+  background-color:  #A5BE00 !important;  
+}
+
+/* JavaScript Category - Selected */
+.blocklyTreeRow.blocklyTreeSelected#blockly-t {
+  background-color: #F85E00 !important 
+}
+
+/* Attributes Category - Selected */
+.blocklyTreeRow.blocklyTreeSelected#blockly-d {
+  background-color: #FFAB19 !important; 
+}
+.blocklyTreeRow{
+  margin-left: 10px !important;
+}
+#blockly-1, #blockly-d, #blockly-k, #blockly-t {
+  padding: 5px;
+  border-radius: 6px;
+  background-color: white;
+  background-image: linear-gradient(to top, white, #34495e); /* Gradient for depth */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3), /* Inner shadow */
+              0 4px 6px rgba(0, 0, 0, 0.1); /* Outer shadow */
+  border: 1px solid #444b54;
+  transition: transform 0.2s ease;
+  height:25px;
+  background-color: rgb(249, 251, 250);
+  border: 1px solid rgb(137, 151, 155);
+  box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+  color: rgb(61, 79, 88);
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+/* Slight pop-up effect on hover */
+#blockly-1:hover, #blockly-d:hover, #blockly-k:hover, #blockly-t:hover {
+  transform: translateY(-2px); /* Pop-up effect */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+#blockly-1 {
+  background-image: linear-gradient(145deg, #0ACDFF, #0099CC); /* Light to dark gradient */
+}
+#blockly-d {
+  background-image: linear-gradient(145deg, #FFAB19, #CC8800);
+}
+#blockly-k {
+  background-image: linear-gradient(145deg, #A5BE00, #7FA800);
+}
+#blockly-t {
+  background-image: linear-gradient(145deg, #F85E00, #CC4800);
+}
+
+#blockly-1, #blockly-d, #blockly-k, #blockly-t {
+  border-top: 2px solid rgba(255, 255, 255, 0.2); /* Light edge on top */
+  border-left: 2px solid rgba(255, 255, 255, 0.2); /* Light edge on left */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2); /* Dark edge on bottom */
+  border-right: 2px solid rgba(0, 0, 0, 0.2); /* Dark edge on right */
+  border-radius: 6px;
+  
+}
+
+#blockly-1:hover, #blockly-d:hover, #blockly-k:hover, #blockly-t:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), /* Outer shadow */
+              0 0 8px rgba(255, 255, 255, 0.5); /* Soft glow on hover */
+}
+
+
+.blocklyTreeLabel{
+  color: black;
+}
+
+/* General styling for the form */
+#addFileForm {
+  
+ 
+  padding-top: 2rem;
+  
+  max-width: 300px;
+  margin: auto;
+  /* font-family: Arial, sans-serif; */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Styling for the text input */
+#addFileForm input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#addFileForm input[type="text"]:focus {
+  border-color: #4a90e2;
+}
+
+/* Styling for the select dropdown */
+#addFileForm select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#addFileForm select:focus {
+  border-color: #4a90e2;
+}
+
+/* Styling for the submit button */
+#addFileForm button {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4a90e2;
+  background-color: #387ADF;
+  /* background-image: linear-gradient(-180deg, #00D775, #00BD68); */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#addFileForm button:hover {
+  background-color: #357ab8;
+  background-color: rgb(41, 71, 170);
+  /* background-image: linear-gradient(-180deg, #01884b, #00BD68); */
+}
