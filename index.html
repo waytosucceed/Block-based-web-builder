@@ -54,11 +54,19 @@
             <span class="files-text">Files</span>
         </div>
         </button>
-        <button id="toolsButton">
+
+        <button id="toolsButton" class="active">
           <div class="tools-button">
             <img src="./assets/options/toolbox.png" alt="Files Icon" class="tools-icon">
             <span class="files-text">Tools</span>
         </div>
+        </button>
+
+        <button id="helpButton">
+          <div class="help-button">
+            <img src="./assets/options/help.png" alt="Help Icon" class="help-icon">
+            <span class="files-text">Need Help?</span>
+          </div>
         </button>
        
       </div>
@@ -90,8 +98,8 @@
 <div id="confirmationModal" class="modal">
   <div class="modal-content">
     <p>Are you sure you want to download the entire project?</p>
-    <button id="yesButton">Yes</button>
-    <button id="noButton">No</button>
+    <button id="yesButton" class ='modal-button'>Yes</button>
+    <button id="noButton" class="modal-button">No</button>
   </div>
 </div>
 
@@ -147,154 +155,158 @@
     <!-- Toolbox XML -->
     <xml id="toolbox" style="display: none">
      
-      <category name="HTML">
-        <category name="Document Structure" colour="#0ACDFF">
-          <label text="Document Structure"></label>
-          <block type="html_doctype"></block>
-          <block type="html_html"></block>
-          <block type="html_head"></block>
-          <block type="html_body"></block>
-        </category>
+      <category name="HTML" id="HTML" >
 
-        <category name="Metadata and links" colour="#0ACDFF">
-          <label text="Metadata and links"></label>
-          <block type="html_style"></block>
-          <block type="html_link"></block>
-          <block type="html_script"></block>
-        </category>
-
-        <category name="Text" colour="#0ACDFF">
-          <label text="Text"></label>
-          <block type="plain_text"></block>
-          <block type="html_heading"></block>
-          <block type="html_p"></block>
-        </category>
-
-        <category name="Text Formatting" colour="#0ACDFF">
-          <label text="Text Formatting"></label>
-          <block type="strong"></block>
-          <block type="bold_text"></block>
-          <block type="emphasized"></block>
-          <block type="italic"></block>
-          <block type="underline"></block>
-          <block type="span"></block>
-        </category>
-
-        <category name="Line Breaks and Dividers" colour="#0ACDFF">
-          <label text="Line Breaks and Dividers"></label>
-          <block type="html_br"></block>
-          <block type="html_hr"></block>
-        </category>
-
-        <category name="Media" colour="#0ACDFF">
-          <label text="Media"></label>
-          <block type="html_img"></block>
-          <block type="html_audio"></block>
-          <block type="html_video"></block>
-          <block type="html_source"></block>
-          <block type="html_iframe"></block>
-        </category>
-     
-        <category name="Interactive Elements" colour="#0ACDFF">
-          <label text="Interactive Elements"></label>
-          <block type="html_button"></block>
-          <block type="html_a"></block>
-        </category>
-
-        <category name="Containers and Layout" colour="#0ACDFF">
-          <label text="Containers and Layout"></label>
-          <block type="html_div"></block>
-          <block type="html_header"></block>
-          <block type="html_footer"></block>
-          <block type="html_nav"></block> 
-          <block type="html_article"></block>
-          <block type="html_aside"></block>
-        </category>
-
-        <category name="Form" colour="#0ACDFF">
-          <label text="Form"></label>
-          <block type="html_form"></block>
-          <block type="html_label"></block>
-          <block type="html_input"></block>
-          <block type="html_textarea"></block>
-          <block type="html_select"></block>
-          <block type="html_datalist"></block>
-          <block type="html_option"></block>
-        </category>
-
-        <category name="List" colour="#0ACDFF">
-          <block type="html_ul"></block>
-          <block type="html_ol"></block>
-          <block type="html_li"></block>
-        </category>  
-
-        <category name="Table" colour="#0ACDFF">
-          <block type="html_table"></block>
-          <block type="html_caption"></block>
-          <block type="html_th"></block>
-          <block type="html_tr"></block>
-          <block type="html_td"></block>
-        </category>
-      </category>
-
-      <category name="Attributes">
-        <category name="Basic" colour="#FFAB19">
-          <label text="Basic"></label>
-          <block type="html_attribute_id"></block>
-          <block type="html_attribute_class"></block>
-          <block type="html_attribute_title"></block>
-          <block type="html_attribute_style"></block>
-          <block type="html_attribute_width"></block>
-          <block type="html_attribute_height"></block>
-          <block type="html_attribute_border"></block>
-          <block type="html_attribute_lang"></block>
-        </category>
-
-        <category name="Content" colour="#FFAB19">
-          <label text="Content"></label>
-          <block type="html_attribute_placeholder"></block>
-          <block type="html_attribute_value"></block>
-          <block type="html_attribute_href"></block>
-          <block type="html_attribute_src"></block>
-          <block type="html_attribute_type_form"></block>
-        </category>
-
-        <category name="Events" colour="#FFAB19">
-          <label text="Events"></label>
-          <block type="html_attribute_onclick"></block>
-        </category>
-
-        <category name="Input" colour="#FFAB19">
-          <label text="Input"></label>
-          <block type="html_attribute_rows"></block>
-          <block type="html_attribute_cols"></block>
-          <block type="html_attribute_size"></block>
-          <block type="html_attribute_maxlength"></block>
-          <block type="html_attribute_multiple"></block>
-        </category>
-
-        <category name="Form" colour="#FFAB19">
-          <label text="Form"></label>
-          <block type="html_attribute_for"></block>
-          <block type="html_attribute_name"></block>
-          <block type="html_attribute_pattern"></block>
-          <block type="html_attribute_disabled"></block>       
-          <block type="html_attribute_label"></block>
-          <block type="html_attribute_value"></block>
-          <block type="html_attribute_list"></block>
-          <block type="html_attribute_required"></block>
-          <block type="html_attribute_autofocus"></block>
-        </category>
-
-        <category name="Media" colour="#FFAB19">
-          <label text="Media"></label>
-          <block type="html_attribute_autoplay"></block>
-          <block type="html_attribute_muted"></block>
-          <block type="html_attribute_controls"></block>
-          <block type="html_attribute_type"></block>
-          <block type="html_attribute_alt"></block>
-        </category>
+        <category name="Tags" id="HTML">
+        
+          <category name="Document Structure" colour="#0ACDFF" id="Tags">
+            <label text="Document Structure"></label>
+            <block type="html_doctype"></block>
+            <block type="html_html"></block>
+            <block type="html_head"></block>
+            <block type="html_body"></block>
+          </category>
   
+          <category name="Metadata and links" colour="#0ACDFF" id="Tags">
+            <label text="Metadata and links"></label>
+            <block type="html_style"></block>
+            <block type="html_link"></block>
+            <block type="html_script"></block>
+          </category>
+  
+          <category name="Text" colour="#0ACDFF" id="Tags">
+            <label text="Text"></label>
+            <block type="plain_text"></block>
+            <block type="html_heading"></block>
+            <block type="html_p"></block>
+          </category>
+  
+          <category name="Text Formatting" colour="#0ACDFF" id="Tags">
+            <label text="Text Formatting"></label>
+            <block type="strong"></block>
+            <block type="bold_text"></block>
+            <block type="emphasized"></block>
+            <block type="italic"></block>
+            <block type="underline"></block>
+            <block type="span"></block>
+          </category>
+  
+          <category name="Line Breaks and Dividers" colour="#0ACDFF" id="Tags">
+            <label text="Line Breaks and Dividers"></label>
+            <block type="html_br"></block>
+            <block type="html_hr"></block>
+          </category>
+  
+          <category name="Media" colour="#0ACDFF" id="Tags">
+            <label text="Media"></label>
+            <block type="html_img"></block>
+            <block type="html_audio"></block>
+            <block type="html_video"></block>
+            <block type="html_source"></block>
+            <block type="html_iframe"></block>
+          </category>
+       
+          <category name="Interactive Elements" colour="#0ACDFF" id="Tags">
+            <label text="Interactive Elements"></label>
+            <block type="html_button"></block>
+            <block type="html_a"></block>
+          </category>
+  
+          <category name="Containers and Layout" colour="#0ACDFF" id="Tags">
+            <label text="Containers and Layout"></label>
+            <block type="html_div"></block>
+            <block type="html_header"></block>
+            <block type="html_footer"></block>
+            <block type="html_nav"></block> 
+            <block type="html_article"></block>
+            <block type="html_aside"></block>
+          </category>
+  
+          <category name="Form" colour="#0ACDFF" id="Tags">
+            <label text="Form"></label>
+            <block type="html_form"></block>
+            <block type="html_label"></block>
+            <block type="html_input"></block>
+            <block type="html_textarea"></block>
+            <block type="html_select"></block>
+            <block type="html_datalist"></block>
+            <block type="html_option"></block>
+          </category>
+  
+          <category name="List" colour="#0ACDFF" id="Tags">
+            <block type="html_ul"></block>
+            <block type="html_ol"></block>
+            <block type="html_li"></block>
+          </category>  
+  
+          <category name="Table" colour="#0ACDFF" id="Tags">
+            <block type="html_table"></block>
+            <block type="html_caption"></block>
+            <block type="html_th"></block>
+            <block type="html_tr"></block>
+            <block type="html_td"></block>
+          </category>
+        </category>
+
+        <category name="Attributes" id="HTML">
+          <category name="Basic" colour="#FFAB19" id="Attributes">
+            <label text="Basic"></label>
+            <block type="html_attribute_id"></block>
+            <block type="html_attribute_class"></block>
+            <block type="html_attribute_title"></block>
+            <block type="html_attribute_style"></block>
+            <block type="html_attribute_width"></block>
+            <block type="html_attribute_height"></block>
+            <block type="html_attribute_border"></block>
+            <block type="html_attribute_lang"></block>
+          </category>
+  
+          <category name="Content" colour="#FFAB19" id="Attributes">
+            <label text="Content"></label>
+            <block type="html_attribute_placeholder"></block>
+            <block type="html_attribute_value"></block>
+            <block type="html_attribute_href"></block>
+            <block type="html_attribute_src"></block>
+            <block type="html_attribute_type_form"></block>
+          </category>
+  
+          <category name="Events" colour="#FFAB19" id="Attributes">
+            <label text="Events"></label>
+            <block type="html_attribute_onclick"></block>
+          </category>
+  
+          <category name="Input" colour="#FFAB19" id="Attributes">
+            <label text="Input"></label>
+            <block type="html_attribute_rows"></block>
+            <block type="html_attribute_cols"></block>
+            <block type="html_attribute_size"></block>
+            <block type="html_attribute_maxlength"></block>
+            <block type="html_attribute_multiple"></block>
+          </category>
+  
+          <category name="Form" colour="#FFAB19" id="Attributes">
+            <label text="Form"></label>
+            <block type="html_attribute_for"></block>
+            <block type="html_attribute_name"></block>
+            <block type="html_attribute_pattern"></block>
+            <block type="html_attribute_disabled"></block>       
+            <block type="html_attribute_label"></block>
+            <block type="html_attribute_value"></block>
+            <block type="html_attribute_list"></block>
+            <block type="html_attribute_required"></block>
+            <block type="html_attribute_autofocus"></block>
+          </category>
+  
+          <category name="Media" colour="#FFAB19" id="Attributes">
+            <label text="Media"></label>
+            <block type="html_attribute_autoplay"></block>
+            <block type="html_attribute_muted"></block>
+            <block type="html_attribute_controls"></block>
+            <block type="html_attribute_type"></block>
+            <block type="html_attribute_alt"></block>
+          </category>
+    
+        </category>       
       </category>
 
       <category name="CSS">

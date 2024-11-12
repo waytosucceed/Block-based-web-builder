@@ -67,7 +67,7 @@ header h1{
 }
 
 
-#fileManagerButton, #toolsButton {
+#fileManagerButton, #toolsButton{
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -83,7 +83,7 @@ header h1{
   transition: all 0.3s ease;
   text-align: center;
   margin-top: 1rem;
-  border-color: white;
+border: 1px solid #616467;
 
 }
 
@@ -95,9 +95,6 @@ header h1{
   border: 2px solid #ffcc00; /* Strong yellow border on hover and active */
 }
 
-h2{
-  /* color:white; */
-}
 
 .files-icon, .tools-icon {
   width: 30px; /* Adjust icon size */
@@ -105,7 +102,30 @@ h2{
   margin-bottom: 3px; /* Spacing between icon and text */
   
 }
+#helpButton {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 52px; /* Adjust to fit icon */
+  height: 54px; /* Adjust to fit icon */
+  border-radius: 6px; /* Match other buttons */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle default shadow */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: auto; /* Push button to the bottom */
+  border: 1px solid #616467;
+}
 
+.help-icon{
+  width: 20px; /* Adjust icon size */
+  height: auto;
+  margin-bottom: 3px; /* Spacing between icon and text */
+}
 
 
 
@@ -177,7 +197,7 @@ h2{
 }
 
 /* Button styles */
-button {
+.modal-button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -196,7 +216,7 @@ button {
   color: white;
 }
 
-button:hover {
+.modal-button:hover {
   opacity: 0.8;
 }
 
@@ -339,60 +359,39 @@ button:hover {
   padding: 10px;
 }
 
-.toggle-btn {  
+.toggle-btn {
   background-color: white !important;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-weight: bold;
-  /* width: 120px; */
-  height:30px;
-  margin: 10px; /* Can be adjusted if needed */
+  height: 30px;
+  margin: 10px;
   border-radius: 5px;
-  /* font-size: 14px; */
   transition: all 0.3s ease;
   text-align: center;
-  /* color: white; */
-  outline: none;
-  cursor: pointer;
-  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
   transition-duration: .3s;
-  border: 1px solid transparent;
-
-  padding: 16px 14px 18px;
-  color: #616467;
-  box-shadow: inset 0 0 0 2px #616467;
-  background-color: transparent;
-}
-
-.toggle-btn{
-  /* background-image: linear-gradient(-180deg, #00D775, #00BD68); */
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
   color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  /* height: 44px; */
-  /* line-height: 44px; */
   outline: 0;
   overflow: hidden;
   padding: 0 20px;
   pointer-events: auto;
   position: relative;
-  text-align: center;
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
   vertical-align: top;
   white-space: nowrap;
-  /* width: 100%; */
   z-index: 9;
   border: 0;
   color: black;
 }
+
 .toggle-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
@@ -427,7 +426,6 @@ height: auto;
 
 /* Toolbox background */
 .blocklyToolboxDiv {
-  display:none !important;/*Made toolbox invisible by default. !important is added to override the initial CSS rule */
   background-color: white; /* Dark background for toolbox */
   /* border-right: 2px solid #34495e; */
   color: #ecf0f1; /* Default text color */
@@ -463,6 +461,7 @@ height: auto;
   background-color: #34495e; /* Darker shade on hover */
 }
 
+
 /* Change the flyout background color */
 .blocklyFlyoutBackground {
   fill: #34495e !important; /* Darker background for the flyout */
@@ -485,16 +484,7 @@ height: auto;
  
 
 }
-#blockly-d {
-  /* background-image: url('./assets/categories/attributes.png') !important;  */
-  background-image: url('./assets/categories/2.png') !important; 
-
-  /* background-size: 31px 33px;  */
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-#blockly-k {
+#blockly-l {
   /* background-image: url('./assets/categories/css.png') !important;  */
   background-image: url('./assets/categories/3.png') !important; 
   /* background-size: 35px 32px;  */
@@ -503,7 +493,7 @@ height: auto;
   background-size: contain;
  
 }
-#blockly-t {
+#blockly-u {
   /* background-image: url('./assets/categories/js.png') !important;  */
   background-image: url('./assets/categories/4.png') !important; 
   /* background-size: 30px 33px;  */
@@ -522,23 +512,20 @@ height: auto;
 }
 
 /* CSS Category - Selected */
-.blocklyTreeRow.blocklyTreeSelected#blockly-k {
+.blocklyTreeRow.blocklyTreeSelected#blockly-l {
   background-color:  #A5BE00 !important;  
 }
 
 /* JavaScript Category - Selected */
-.blocklyTreeRow.blocklyTreeSelected#blockly-t {
+.blocklyTreeRow.blocklyTreeSelected#blockly-u {
   background-color: #F85E00 !important 
 }
 
-/* Attributes Category - Selected */
-.blocklyTreeRow.blocklyTreeSelected#blockly-d {
-  background-color: #FFAB19 !important; 
-}
+
 .blocklyTreeRow{
   margin-left: 10px !important;
 }
-#blockly-1, #blockly-d, #blockly-k, #blockly-t {
+#blockly-1, #blockly-l, #blockly-u {
   padding: 5px;
   border-radius: 6px;
   background-color: white;
@@ -556,24 +543,22 @@ height: auto;
   margin-right: 0.5rem;
 }
 /* Slight pop-up effect on hover */
-#blockly-1:hover, #blockly-d:hover, #blockly-k:hover, #blockly-t:hover {
+#blockly-1:hover, #blockly-l:hover, #blockly-u:hover {
   transform: translateY(-2px); /* Pop-up effect */
   box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow */
 }
 #blockly-1 {
   background-image: linear-gradient(145deg, #0ACDFF, #0099CC); /* Light to dark gradient */
 }
-#blockly-d {
-  background-image: linear-gradient(145deg, #FFAB19, #CC8800);
-}
-#blockly-k {
+
+#blockly-l {
   background-image: linear-gradient(145deg, #A5BE00, #7FA800);
 }
-#blockly-t {
+#blockly-u {
   background-image: linear-gradient(145deg, #F85E00, #CC4800);
 }
 
-#blockly-1, #blockly-d, #blockly-k, #blockly-t {
+#blockly-1,  #blockly-l, #blockly-u {
   border-top: 2px solid rgba(255, 255, 255, 0.2); /* Light edge on top */
   border-left: 2px solid rgba(255, 255, 255, 0.2); /* Light edge on left */
   border-bottom: 2px solid rgba(0, 0, 0, 0.2); /* Dark edge on bottom */
@@ -582,7 +567,7 @@ height: auto;
   
 }
 
-#blockly-1:hover, #blockly-d:hover, #blockly-k:hover, #blockly-t:hover {
+#blockly-1:hover, #blockly-l:hover, #blockly-u:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), /* Outer shadow */
               0 0 8px rgba(255, 255, 255, 0.5); /* Soft glow on hover */
 }
