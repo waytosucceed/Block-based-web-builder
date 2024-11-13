@@ -505,21 +505,24 @@ height: auto;
 .blocklyTreeIcon{
   display: none !important;
 }
-
-/* HTML Category - Selected */
-.blocklyTreeRow.blocklyTreeSelected#blockly-1 {
-  background-color: #0ACDFF !important; 
+/* Tags Category - Selected */
+.blocklyTreeRow.blocklyTreeSelected#blockly-2 {
+  background-color: #0ACDFF !important 
 }
-
+/* Attributes Category - Selected */
+.blocklyTreeRow.blocklyTreeSelected#blockly-3 {
+  background-color: #BF1363 !important 
+}
 /* CSS Category - Selected */
 .blocklyTreeRow.blocklyTreeSelected#blockly-l {
   background-color:  #A5BE00 !important;  
 }
-
 /* JavaScript Category - Selected */
 .blocklyTreeRow.blocklyTreeSelected#blockly-u {
   background-color: #F85E00 !important 
 }
+
+
 
 
 .blocklyTreeRow{
