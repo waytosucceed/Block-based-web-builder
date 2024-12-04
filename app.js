@@ -2,6 +2,7 @@
 
 // Initialize the Blockly workspace
 
+
 var workspace = Blockly.inject('blocklyDiv', {
     toolbox: document.getElementById('toolbox'),
     trashcan: false,  // Hide the trashcan to prevent accidental deletion,
@@ -20,9 +21,9 @@ var workspace = Blockly.inject('blocklyDiv', {
 
 // Create a function to add or update the label block
 function updateFileLabelBlock(fileName) {
-   document.getElementById('current-filename').textContent=fileName;
+    document.getElementById('current-filename').textContent = fileName;
 }
-
+ var isFlyoutOpen;
 
 
 
@@ -139,7 +140,7 @@ function addFile(name, type) {
 function renderFileList() {
     var fileList = document.getElementById('fileList');
     fileList.innerHTML = '';
-    
+
 
     files.forEach((file, index) => {
         // Create a clickable <a> tag for each file
@@ -166,7 +167,7 @@ function renderFileList() {
         a.addEventListener('contextmenu', function (e) {
             e.preventDefault();
             if (confirm(`Are you sure you want to delete "${file.name}.${file.type}"?`)) {
-                if(index==currentFileIndex){
+                if (index == currentFileIndex) {
                     alert("Cannot delete the active file.");
                     return;
                 }
@@ -324,7 +325,6 @@ function generateCodeForFile(file) {
     }
     return code;
 }
-
 //Function to generate HTML from blocks
 
 function generateHTMLFromBlocks() {
@@ -349,6 +349,7 @@ function generateHTMLFromBlocks() {
     var doc = parser.parseFromString(htmlContent, 'text/html');
 
     var bodyContent = doc.body.innerHTML;
+    var styleContentHead = doc.head.querySelector('style')?.textContent || '';
     var bodyStyle = doc.body.getAttribute('style') || '';  // Get the inline style on <body>
 
 
@@ -370,7 +371,7 @@ function generateHTMLFromBlocks() {
             return cssFile ? cssFile.generatedCode : '';
         })
         .join('\n');
-
+    allCSS = `${styleContentHead} ${allCSS}`;
     var allJS = linkedJS
         .map(src => {
             var jsFile = files.find(file => `${file.name}.js` === src);
@@ -436,17 +437,18 @@ function updateLivePreview() {
 
 
 // Function to load a specific page into the Live Preview iframe
-function loadPage(page) {function updatePopOutWindow(allCSS, bodyStyle, bodyContent, allJS) {
-    if (previewWindow && !previewWindow.closed) {
-        previewWindow.postMessage({
-            type: "updateContent",
-            css: allCSS,
-            style: bodyStyle,
-            content: bodyContent,
-            js: allJS
-        }, "*");
+function loadPage(page) {
+    function updatePopOutWindow(allCSS, bodyStyle, bodyContent, allJS) {
+        if (previewWindow && !previewWindow.closed) {
+            previewWindow.postMessage({
+                type: "updateContent",
+                css: allCSS,
+                style: bodyStyle,
+                content: bodyContent,
+                js: allJS
+            }, "*");
+        }
     }
-}
     // Ensure the page exists in userFiles
     if (!userFiles.hasOwnProperty(page)) {
         alert(`File "${page}" does not exist.`);
@@ -471,9 +473,28 @@ function loadPage(page) {function updatePopOutWindow(allCSS, bodyStyle, bodyCont
     // Select the target file, which will update the Live Preview
     selectFile(targetIndex);
 }
+function showModal() {
+    confirmationModal.style.display = 'block'; // Show the modal
+}
+const confirmationModal = document.getElementById('confirmationModal');
+const yesButton = document.getElementById('yesButton');
+const noButton = document.getElementById('noButton');
+// Hide the modal when the user clicks "No"
+noButton.addEventListener('click', function () {
+    confirmationModal.style.display = 'none'; // Close the modal
+});
 
+// Proceed with the download when the user clicks "Yes"
+yesButton.addEventListener('click', function () {
+    confirmationModal.style.display = 'none'; // Close the modal
+
+    // Trigger the actual download (replace this with your actual download logic)
+    exportProjectAsZip();
+});
 // Function to export all files as a ZIP
 function exportProjectAsZip() {
+
+
     var zip = new JSZip();
 
     // Identify the main HTML file (e.g., 'index.html')
@@ -529,7 +550,7 @@ function exportProjectAsZip() {
 }
 
 // Add event listener for the export button
-document.getElementById('exportButton').addEventListener('click', exportProjectAsZip);
+document.getElementById('exportButton').addEventListener('click', showModal);
 
 
 // Function to create an initial HTML file (e.g., index.html)
@@ -546,15 +567,19 @@ function createInitialHtmlFile() {
 // Function to inject default blocks for HTML structure
 function injectDefaultHtmlBlocks(workspace) {
 
-
+    const xmlText = ``
     // const xmlText = `
     //    <xml xmlns="https://developers.google.com/blockly/xml"><block type="html_doctype" id="=~G0u!a[/8K^=WF|Q18C" x="26" y="28"><next><block type="html_html" id="AJRC)uHs3[w3Hm[{9y;I"><statement name="CONTENT"><block type="html_head" id=".vC4_R99:m%\`p_PhZJt|"><next><block type="html_body" id="}8/9vZOxk9M?gGv/tm,G"><value name="ATTRIBUTES"><block type="html_attribute_style" id="ULu;W@d~f@2|gHRyRmPC"><value name="LEFT_INPUT"><block type="css_background_color" id="/UOSX/AWaa=]jK^}I-xp"><field name="COLOR">pink</field></block></value></block></value><statement name="CONTENT"><block type="html_heading" id="WY|y(wzStycc;q9U/+Sb"><field name="HEADING_LEVEL">h1</field><field name="HEADING_LEVEL_CLOSING">h1</field><value name="ATTRIBUTES"><block type="html_attribute_style" id="Y;GzqtNBuj4R@,?-CrLy"><value name="LEFT_INPUT"><block type="css_text_align" id="bLN#q.s+EedSmDcQ/\`5}"><field name="ALIGN">left</field><value name="LEFT_INPUT"><block type="css_border" id="FUkm;SH*/\`|5N7z5d_PS"><field name="BORDER">4px dotted white</field></block></value></block></value></block></value><statement name="CONTENT"><block type="plain_text" id="m,s4IST$KO86@BY;0g^s"><field name="CONTENT">I am the best!</field></block></statement></block></statement></block></next></block></statement></block></next></block></xml>
     // `;
 
-    const xmlText=``
+    if (xmlText) {
 
-    const xml = Blockly.Xml.textToDom(xmlText);
-    Blockly.Xml.domToWorkspace(xml, workspace);
+        const xml = Blockly.Xml.textToDom(xmlText);
+        Blockly.Xml.domToWorkspace(xml, workspace);
+    }
+
+
+
 }
 
 // Initialize by creating an initial HTML file when the page loads
@@ -624,17 +649,35 @@ window.addEventListener('message', function (event) {
 // Handle opening/closing of File Manager and Toolbox
 const fileManagerButton = document.getElementById("fileManagerButton");
 const fileManager = document.getElementById("fileManager");
+const toolboxButton = document.getElementById("toolsButton");
 
 // Toggle File Manager visibility
 fileManagerButton.addEventListener("click", function () {
+    var toolboxDiv = document.querySelector('.blocklyToolboxDiv');
+    var flyout=document.querySelector('.blocklyFlyout');
+    
+    //To close toolbox if user clicks on files button
+    var isVisible = window.getComputedStyle(toolboxDiv).display == 'block';
+
+    if (isVisible) {
+        toolboxButton.classList.toggle('active')
+        document.querySelector('.blocklyToolboxDiv').style.setProperty('display', 'none', 'important');
+        if(isFlyoutOpen){
+            flyout.style.setProperty('display', 'none', 'important');
+        }
+       
+        
+    }
+
+
     if (fileManager.style.display === "none" || !fileManager.style.display) {
         fileManager.style.display = "block";
         this.classList.toggle('active');
-       
+
     } else {
         fileManager.style.display = "none";
         this.classList.toggle('active');
-       
+
     }
 });
 
@@ -769,3 +812,109 @@ function popOutPreview() {
 document.getElementById('popOut').addEventListener('click', function () {
     popOutPreview()
 })
+
+//Addded this function to toggle toolbox
+toolboxButton.addEventListener('click', function () {
+
+
+    //To close fileManger when toolbox is clicked
+    if (fileManager.style.display === "block") {
+        fileManagerButton.classList.toggle('active')
+        fileManager.style.display = "none";
+    }
+
+    var toolboxDiv = document.querySelector('.blocklyToolboxDiv');
+    var flyout=document.querySelector('.blocklyFlyout');
+    var flyoutVisible=flyout.style.display === "block";
+ 
+    var isVisible = window.getComputedStyle(toolboxDiv).display == 'block';
+
+    if (isVisible) {
+
+        this.classList.toggle('active');
+        toolboxDiv.style.setProperty('display', 'none', 'important');
+        if(isFlyoutOpen && flyoutVisible) {
+            flyout.style.display = "none";
+        }
+        
+        
+    }
+    else {
+        this.classList.toggle('active');
+        toolboxDiv.style.setProperty('display', 'block', 'important');
+        if(isFlyoutOpen && !flyoutVisible) {
+            flyout.style.display = "block";
+        }
+     
+        
+
+    }
+})
+// This function sets up an event listener to manage the opening/closing of categories
+function setupSingleCategoryOpen() {
+    // Listen for Blockly events on the workspace
+    workspace.addChangeListener(function (event) {
+        console.log(event.type)
+        // Check if the event is a category open event
+        if (event.type === 'toolbox_item_select') {
+
+            //Checking if the flyOut is open
+            isFlyoutOpen=workspace.getFlyout().isVisible();
+    
+              
+            var selectedCategory = Blockly.getMainWorkspace().getToolbox().getSelectedItem();
+            var selectedCategoryName = selectedCategory.name_;
+
+       
+            const toolbox = workspace.getToolbox();
+
+            if (selectedCategory.parent_) {
+
+              if (selectedCategory.parent_) {
+
+                var parentCategory = selectedCategory.parent_.name_;
+
+                var parentCategoryParent=''
+               
+ 
+                // Loop through all categories to get the parent of parent category if any
+                toolbox.getToolboxItems().forEach(item => {
+                    if(item.name_ == parentCategory){
+                       parentCategoryParent=item.toolboxItemDef_.id;
+                    }    
+                    
+                });
+                //Making sure only the selected category and parent category are open
+                toolbox.getToolboxItems().forEach(item=>{
+                    if(item.name_!==selectedCategoryName && item.name_!==parentCategory && item.name_!==parentCategoryParent){
+                        if(item.expanded_){
+                            item.setExpanded(false);
+                        }
+                    }
+                })
+
+                       
+              
+            }
+                      
+              
+            }
+            else {
+                // Loop through all categories
+                toolbox.getToolboxItems().forEach(item => {
+
+                    if (item.expanded_ && item.name_ != selectedCategoryName) {
+                        item.setExpanded(false);
+                    }
+
+                });
+            }
+
+
+        }
+    });
+}
+
+// Call this function after Blockly workspace has been initialized
+setupSingleCategoryOpen();
+

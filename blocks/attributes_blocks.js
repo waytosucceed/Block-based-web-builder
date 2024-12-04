@@ -8,7 +8,7 @@ Blockly.Blocks['html_attribute_id'] = {
       .appendField(new Blockly.FieldTextInput(''), 'ID');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the id attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -37,7 +37,7 @@ Blockly.Blocks['html_attribute_href'] = {
       .appendField(new Blockly.FieldTextInput(''), 'href');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the id attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -64,7 +64,7 @@ Blockly.Blocks['html_attribute_src'] = {
       .appendField(new Blockly.FieldTextInput(''), 'src');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the src attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -91,7 +91,7 @@ Blockly.Blocks['html_attribute_alt'] = {
       .appendField(new Blockly.FieldTextInput(''), 'alt');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the alt attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -118,7 +118,7 @@ Blockly.Blocks['html_attribute_class'] = {
       .appendField("class=")
       .appendField(new Blockly.FieldTextInput(''), 'CLASS');
     this.setOutput(true, 'String');  // This block outputs a string
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the class attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -146,7 +146,7 @@ Blockly.Blocks['html_attribute_style'] = {
 
     this.setOutput(true, 'String');  // Output is a string, part of an attribute chain
     
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     
     this.setTooltip('Sets inline styles for an HTML element.');
     this.setHelpUrl('');
@@ -207,7 +207,7 @@ Blockly.Blocks['html_attribute_type_form'] = {
         ["reset", "reset"],
       ]), 'TYPE');
     this.setOutput(true, 'String');
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the type attribute for an HTML element like button or input.');
     this.setHelpUrl('');
   }
@@ -230,7 +230,7 @@ Blockly.Blocks['html_attribute_disabled'] = {
 
     // This block outputs a string, which will be used in the HTML tag
     this.setOutput(true, 'String');
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Makes HTML Element disabled.');
     this.setHelpUrl('');
   }
@@ -254,7 +254,7 @@ Blockly.Blocks['html_attribute_autoplay'] = {
 
     // This block outputs a string, which will be used in the HTML tag
     this.setOutput(true, 'String');
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('');
     this.setHelpUrl('');
   }
@@ -278,7 +278,7 @@ Blockly.Blocks['html_attribute_muted'] = {
 
     // This block outputs a string, which will be used in the HTML tag
     this.setOutput(true, 'String');
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('');
     this.setHelpUrl('');
   }
@@ -302,7 +302,7 @@ Blockly.Blocks['html_attribute_controls'] = {
 
     // This block outputs a string, which will be used in the HTML tag
     this.setOutput(true, 'String');
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('');
     this.setHelpUrl('');
   }
@@ -326,7 +326,7 @@ Blockly.Blocks['html_attribute_type'] = {
       .appendField(new Blockly.FieldTextInput(''), 'type');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('');
     this.setHelpUrl('');
   }
@@ -354,7 +354,7 @@ Blockly.Blocks['html_attribute_width'] = {
       .appendField(new Blockly.FieldTextInput(''), 'width');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the width attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -381,7 +381,7 @@ Blockly.Blocks['html_attribute_height'] = {
       .appendField(new Blockly.FieldTextInput(''), 'height');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the height attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -408,7 +408,7 @@ Blockly.Blocks['html_attribute_border'] = {
       .appendField(new Blockly.FieldTextInput(''), 'data');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Specify border of the table.');
     this.setHelpUrl('');
   }
@@ -435,7 +435,7 @@ Blockly.Blocks['html_attribute_for'] = {
       .appendField(new Blockly.FieldTextInput(''), 'data');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the for attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -462,7 +462,7 @@ Blockly.Blocks['html_attribute_name'] = {
       .appendField(new Blockly.FieldTextInput(''), 'data');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the name attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -489,7 +489,7 @@ Blockly.Blocks['html_attribute_value'] = {
       .appendField(new Blockly.FieldTextInput(''), 'data');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the value attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -514,7 +514,7 @@ Blockly.Blocks['html_attribute_size'] = {
       .appendField("size=")
       .appendField(new Blockly.FieldNumber(1, 1), "SIZE");
     this.setOutput(true, "String");
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip("Sets the size of an input field.");
     this.setHelpUrl("https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/size");
   }
@@ -534,7 +534,7 @@ Blockly.Blocks['html_attribute_maxlength'] = {
       .appendField("maxlength=")
       .appendField(new Blockly.FieldNumber(1, 1), "MAXLENGTH");
     this.setOutput(true, "String");
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip("Sets the maximum number of characters allowed in an input field.");
     this.setHelpUrl("https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength");
   }
@@ -553,7 +553,7 @@ Blockly.Blocks['html_attribute_multiple'] = {
       .setCheck(null)
       .appendField("multiple");
     this.setOutput(true, "String");
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip("Allows the user to select multiple values.");
     this.setHelpUrl("https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/multiple");
   }
@@ -572,7 +572,7 @@ Blockly.Blocks['html_attribute_pattern'] = {
       .appendField("pattern=")
       .appendField(new Blockly.FieldTextInput(""), "PATTERN");
     this.setOutput(true, "String");
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip("Specifies a regular expression that the input's value must match.");
     this.setHelpUrl("https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern");
   }
@@ -592,7 +592,7 @@ Blockly.Blocks['html_attribute_placeholder'] = {
       .appendField("placeholder=")
       .appendField(new Blockly.FieldTextInput("Enter text"), "PLACEHOLDER");
     this.setOutput(true, "String");
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip("Sets a placeholder text for an input field.");
     this.setHelpUrl("https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/placeholder");
   }
@@ -611,7 +611,7 @@ Blockly.Blocks['html_attribute_required'] = {
       .setCheck(null)
       .appendField("required");
     this.setOutput(true, "String");
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip("Makes the input field required.");
     this.setHelpUrl("https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required");
   }
@@ -629,7 +629,7 @@ Blockly.Blocks['html_attribute_autofocus'] = {
       .setCheck(null)
       .appendField("autofocus");
     this.setOutput(true, "String");
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip("Automatically focuses the input field when the page loads.");
     this.setHelpUrl("https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autofocus");
   }
@@ -650,7 +650,7 @@ Blockly.Blocks['html_attribute_lang'] = {
       .appendField(new Blockly.FieldTextInput(''), 'data');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the lang attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -677,7 +677,7 @@ Blockly.Blocks['html_attribute_title'] = {
       .appendField(new Blockly.FieldTextInput(''), 'data');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the title attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -704,7 +704,7 @@ Blockly.Blocks['html_attribute_onclick'] = {
       .appendField(new Blockly.FieldTextInput(''), 'ONCLICK');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the onclick attribute for an HTML element.');
     this.setHelpUrl('https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick');
   }
@@ -731,7 +731,7 @@ Blockly.Blocks['html_attribute_label'] = {
       .appendField(new Blockly.FieldTextInput(''), 'label');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the label attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -758,7 +758,7 @@ Blockly.Blocks['html_attribute_value'] = {
       .appendField(new Blockly.FieldTextInput(''), 'value');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the value attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -785,7 +785,7 @@ Blockly.Blocks['html_attribute_list'] = {
       .appendField(new Blockly.FieldTextInput(''), 'list');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the value attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -812,7 +812,7 @@ Blockly.Blocks['html_attribute_rows'] = {
       .appendField(new Blockly.FieldTextInput(''), 'rows');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the value attribute for an HTML element.');
     this.setHelpUrl('');
   }
@@ -839,7 +839,7 @@ Blockly.Blocks['html_attribute_cols'] = {
       .appendField(new Blockly.FieldTextInput(''), 'cols');
 
     this.setOutput(true, null);  // Output on the right side
-    this.setColour('#FFAB19');
+    this.setColour('#BF1363');
     this.setTooltip('Sets the value attribute for an HTML element.');
     this.setHelpUrl('');
   }
